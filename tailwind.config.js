@@ -4,8 +4,8 @@ module.exports = {
   content: [
     "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
-    "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
+    "./ui/src/**/*.{ts,tsx}",
   ],
   prefix: "",
   theme: {
@@ -21,6 +21,7 @@ module.exports = {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
+        brand: "#46BEBE",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
