@@ -29,18 +29,10 @@ const MainPage = () => {
               <p>뫔뫔마마마마를 같이 해보아요!</p>
             </div>
           </div>
-          <footer className="flex flex-col items-center gap-4">
-            <Link to="/" className="w-full sm:w-80">
+          <footer>
+            <Link to="/login" className="w-full sm:w-80">
               <Button variant="brand" className="w-full text-xl font-semibold">
                 시작하기
-              </Button>
-            </Link>
-            <Link to="/login" className="w-full sm:w-80">
-              <Button
-                variant="outline"
-                className="w-full text-xl font-semibold"
-              >
-                로그인
               </Button>
             </Link>
           </footer>
