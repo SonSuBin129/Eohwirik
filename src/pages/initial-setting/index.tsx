@@ -1,4 +1,4 @@
-import { Stack } from "@/utils/initialSettingFlow";
+import { Stack } from "@/utils/stackflow";
 
 const InitialQuiz = () => {
   return (

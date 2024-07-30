@@ -1,23 +1,21 @@
+import { AppScreen } from "@stackflow/plugin-basic-ui";
 import { ActivityComponentType } from "@stackflow/react";
 
 import {
   Activity,
   ActivityContent,
-  ActivityFooter,
   ActivityHeader,
+  ActivityFooter,
 } from "./Activity";
 
-import { AppScreen } from "@stackflow/plugin-basic-ui";
 import NextStepButton from "./NextStepButton";
-import NickNameField from "./NcikNameField";
 import NumberIcon from "@/components/NumberIcon";
-import ErrorMentBox from "@/pages/signup/_components/ErrorMentBox";
+import ErrorMentBox from "./ErrorMentBox";
+import NickNameField from "./NickNameField";
+
 import { useState } from "react";
-import { useInitialSettingForm } from "@/hooks/useInitialSettingForm";
 
-const NickNameActivity: ActivityComponentType = () => {
-  const { form } = useInitialSettingForm();
-
+const FirstStepActivity: ActivityComponentType = () => {
   const step = 1;
 
   const [nickname, setNickName] = useState("");
@@ -31,7 +29,6 @@ const NickNameActivity: ActivityComponentType = () => {
       setErrorMent("닉네임을 입력해주세요.");
     } else {
       setIsPass(true);
-      form.setValue("nickname", event.target.value);
       setErrorMent("사용 가능한 닉네임 입니다.");
     }
   };
@@ -50,11 +47,11 @@ const NickNameActivity: ActivityComponentType = () => {
           </section>
           <ActivityFooter>
             <NextStepButton
-              activityName={"CategoryActivity" as never}
+              activityName={"SecondStepActivity" as never}
               disabled={!isPass}
               params={{
                 step: step + 1,
-                form,
+                nickname: nickname,
               }}
             ></NextStepButton>
           </ActivityFooter>
@@ -64,4 +61,4 @@ const NickNameActivity: ActivityComponentType = () => {
   );
 };
 
-export default NickNameActivity;
+export default FirstStepActivity;

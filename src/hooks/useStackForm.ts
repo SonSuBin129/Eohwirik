@@ -11,7 +11,7 @@ export type FormSchemaType = z.infer<typeof FormSchema>;
 export type FormType = UseFormReturn<FormSchemaType, unknown, undefined>;
 
 //TODO: 나중에 api 연결해야함.
-export const useInitialSettingForm = () => {
+export const useStackForm = () => {
   const form = useForm<FormSchemaType>({
     resolver: zodResolver(FormSchema),
     defaultValues: {

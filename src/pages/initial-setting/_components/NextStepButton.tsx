@@ -1,29 +1,31 @@
 import { LoaderCircleIcon } from "@ui/components/ui/icon";
 import { Button } from "@ui/components/ui/button";
 
-import { useInitialSettingFlow } from "@/utils/useInitialSettingFlow";
-import { FormType } from "@/hooks/useInitialSettingForm";
+import { useMyFlow } from "@/utils/useMyFlow";
 
 import { useNavigate } from "@/router";
+import { FormType } from "@/hooks/useStackForm";
 
 interface NextStepButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   activityName: never;
   disabled: boolean;
   params?: {
-    form: FormType;
+    step: number;
+    form?: FormType;
   } & Record<string, unknown>;
   isLoading?: boolean;
 }
 
 const NextStepButton = (props: NextStepButtonProps) => {
   const { activityName, disabled, params, isLoading, ...rest } = props;
-  const { push } = useInitialSettingFlow();
+  const { push } = useMyFlow();
   const navigate = useNavigate();
 
   const handleClick = async () => {
-    if (activityName === "CompleteActivity") {
+    if (activityName === "CompleteActivity" && params?.form) {
       // TODO: API 연결 및 다른 작업
+      console.log(params.form.control._formValues);
     } else if (activityName === "MainActivity") {
       navigate("/home", {
         replace: true,

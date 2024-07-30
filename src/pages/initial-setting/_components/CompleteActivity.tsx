@@ -1,15 +1,8 @@
-import { ActivityComponentType } from "@stackflow/react";
-import {
-  Activity,
-  ActivityContent,
-  ActivityFooter,
-  ActivityHeader,
-  ActivityParams,
-} from "./Activity";
-
-import { AppScreen } from "@stackflow/plugin-basic-ui";
-import NextStepButton from "./NextStepButton";
 import BackIcon from "@/components/BackIcon";
+import { Activity, ActivityContent, ActivityFooter } from "./Activity";
+import NextStepButton from "@/pages/initial-setting/_components/NextStepButton";
+import { AppScreen } from "@stackflow/plugin-basic-ui";
+import { ActivityComponentType } from "@stackflow/react";
 
 const CompleteActivity: ActivityComponentType = () => {
   return (

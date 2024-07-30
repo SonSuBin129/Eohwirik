@@ -1,34 +1,30 @@
-import { ActivityComponentType } from "@stackflow/react";
-
+import { useState } from "react";
 import {
   Activity,
   ActivityContent,
-  ActivityHeader,
   ActivityFooter,
+  ActivityHeader,
 } from "./Activity";
-
 import { AppScreen } from "@stackflow/plugin-basic-ui";
+import { ActivityComponentType } from "@stackflow/react";
 import NextStepButton from "./NextStepButton";
-import BackIcon from "@/components/BackIcon";
-import NumberIcon from "@/components/NumberIcon";
-import { useEffect, useState } from "react";
 import CategoryItem from "./CategoryItem";
-import { FormType } from "@/hooks/useInitialSettingForm";
+import NumberIcon from "@/components/NumberIcon";
+import BackIcon from "@/components/BackIcon";
+import { useStackForm } from "@/hooks/useStackForm";
 
-type CategoryParams = {
-  params: {
-    step: number;
-    form: FormType;
-  };
+type SecondParams = {
+  step: number;
+  nickname: string;
 };
 
-const CategoryActivity: React.FC<CategoryParams> = ({ params }) => {
-  const { form, step } = params;
+const SecondStepActivity: ActivityComponentType<SecondParams> = ({
+  params,
+}) => {
+  const { step, nickname } = params;
 
-  console.log("form 확인1:", form.control._formValues);
-
-  console.log("CategoryActivity form:", form);
-  //    form.setValue("categories", ["helloo", "suybin"]);
+  const { form } = useStackForm();
+  form.setValue("nickname", nickname);
 
   const [categories, setCategories] = useState<string[]>([]);
   const [isPass, setIsPass] = useState(false);
@@ -40,7 +36,7 @@ const CategoryActivity: React.FC<CategoryParams> = ({ params }) => {
         : [...prevCategories, title];
 
       setIsPass(newCategories.length > 0);
-
+      form.setValue("categories", newCategories);
       return newCategories;
     });
   };
@@ -106,4 +102,4 @@ const CategoryActivity: React.FC<CategoryParams> = ({ params }) => {
   );
 };
 
-export default CategoryActivity;
+export default SecondStepActivity;
