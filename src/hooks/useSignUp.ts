@@ -1,8 +1,13 @@
+import { useMutationCheckEmail } from "@/hooks/mutation/useMutationCheckEmail";
+import { useMutationSignUp } from "@/hooks/mutation/useMutationSignUp";
 import { useEffect, useState } from "react";
 
 //TODO: 이메일 체크 api 연결
 
 export const useSignUp = () => {
+  const mutation = useMutationCheckEmail();
+  const signupMutation = useMutationSignUp();
+
   const UserOption1Regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   const Option2_Regex1 = /^(?=.*[A-Za-z])(?=.*[0-9!@#$%^&*(),.?":{}|<>])/;
   const Option2_Regex2 =
@@ -45,7 +50,6 @@ export const useSignUp = () => {
         option1: "올바른 이메일 형식을 입력해주세요",
       }));
       setIsOption1Pass(false);
-      setIsOption1Unique(false);
       return;
     } else {
       setErrorMent(prev => ({
@@ -53,8 +57,6 @@ export const useSignUp = () => {
         option1: "",
       }));
       setIsOption1Pass(true);
-
-      //TODO: 이메일 인증 체크하는 api 연결
     }
   };
 
@@ -103,12 +105,43 @@ export const useSignUp = () => {
   };
 
   const handleUnique = () => {
-    //TODO: 이메일 체크 api 연결
-    setIsOption1Unique(true);
+    mutation.mutate(
+      { userEmail: userOption1 },
+      {
+        onSuccess: response => {
+          if (response === "ok") {
+            setErrorMent(prev => ({
+              ...prev,
+              option1: "사용 가능한 이메일 입니다.",
+            }));
+            setIsOption1Unique(true);
+          } else if (response === "no") {
+            setErrorMent(prev => ({
+              ...prev,
+              option1: "이미 등록된 이메일 입니다.",
+            }));
+            setIsOption1Unique(false);
+          }
+        },
+      },
+    );
   };
 
   const handleSignup = () => {
-    setErrorMent({ option1: "", option2: "" });
+    signupMutation.mutate(
+      {
+        userEmail: userOption1,
+        userPassword: userOption2,
+      },
+      {
+        onSuccess: response => {
+          if (response === "success") {
+            setErrorMent({ option1: "", option2: "" });
+            return;
+          }
+        },
+      },
+    );
   };
 
   return {

@@ -3,7 +3,7 @@ import { useMutation } from "@tanstack/react-query";
 
 import { useNavigate } from "@/router";
 
-import { LoginRequestParams, LoginResponse } from "@/types/authType";
+import { LoginRequestParams } from "@/types/authType";
 
 export const useMutationLogin = () => {
   const navigate = useNavigate();
@@ -11,8 +11,8 @@ export const useMutationLogin = () => {
   const mutation = useMutation({
     mutationFn: ({ userEmail, userPassword }: LoginRequestParams) =>
       login({ userEmail, userPassword }),
-    onSuccess: ({ response }: LoginResponse) => {
-      if (response === "success") {
+    onSuccess: (response: string) => {
+      if (response !== "fail") {
         navigate("/home", { replace: true });
         return;
       }

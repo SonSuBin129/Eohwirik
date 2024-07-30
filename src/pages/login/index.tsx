@@ -9,7 +9,6 @@ import { useMutationLogin } from "@/hooks/mutation/useMutationLogin";
 
 const Login = () => {
   const { toast } = useToast();
-  const navigate = useNavigate();
 
   const mutation = useMutationLogin();
 
@@ -28,24 +27,38 @@ const Login = () => {
     });
   };
 
-  let toastContent = "이메일 또는 비밀번호를 확인해주세요.";
   const handleLogin = () => {
+    // 입력 검증
     if (values.option1 === "") {
-      toastContent = "이메일을 입력해주세요.";
-    } else if (values.option2 === "") {
-      toastContent = "비밀번호를 입력해주세요.";
-    } else {
-      // 백엔드 로그인 API 연결
-      mutation.mutate({
-        userEmail: values.option1,
-        userPassword: values.option2,
+      toast({
+        title: "이메일을 입력해주세요.",
+        variant: "brandDestructive",
       });
+      return;
+    } else if (values.option2 === "") {
+      toast({
+        title: "비밀번호를 입력해주세요.",
+        variant: "brandDestructive",
+      });
+      return;
     }
 
-    toast({
-      title: toastContent,
-      variant: "brandDestructive",
-    });
+    mutation.mutate(
+      {
+        userEmail: values.option1,
+        userPassword: values.option2,
+      },
+      {
+        onSuccess: response => {
+          if (response === "fail") {
+            toast({
+              title: "이메일 또는 비밀번호를 확인해주세요.",
+              variant: "brandDestructive",
+            });
+          }
+        },
+      },
+    );
   };
 
   return (

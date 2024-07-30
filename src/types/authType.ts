@@ -3,6 +3,8 @@ export type LoginRequestParams = {
   userPassword: string;
 };
 
-export type LoginResponse = {
-  response: string;
+export type CheckEmailParams = {
+  userEmail: string;
 };
+
+export type SignUpRequestParams = LoginRequestParams;

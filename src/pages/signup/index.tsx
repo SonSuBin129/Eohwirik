@@ -54,7 +54,7 @@ const SignUp = () => {
                   중복 확인
                 </Button>
               </div>
-              <ErrorMentBox ment={errorMent.option1} isPass={isOption1Pass} />
+              <ErrorMentBox ment={errorMent.option1} isPass={isOption1Unique} />
             </div>
           </div>
           <div className="flex w-full flex-col gap-[7px]">
@@ -88,7 +88,7 @@ const SignUp = () => {
             variant={AllPass ? "brand" : "outline"}
             disabled={!AllPass}
             className="w-full text-xl font-semibold"
-            onClick={() => navigate("/initial-setting", { replace: true })}
+            onClick={handleSignup}
           >
             가입하기
           </Button>
