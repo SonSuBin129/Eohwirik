@@ -24,6 +24,8 @@ module.exports = {
         brand: "#46BEBE",
         brandError: "#DF5370",
         brandInput: "#636363",
+        brandGray: "#e4e4e4",
+        brandSubText: "#474747",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {

@@ -12,16 +12,15 @@ export interface PWInputFieldProps
   value: string;
 }
 
-//TODO: 비밀번호 정규식 확인 후 사용가능 여부 알려주는 아이콘으로 수정
 const PWInputField = React.forwardRef<HTMLInputElement, PWInputFieldProps>(
   ({ className, doubleCheck, value, isPass, ...props }, ref) => {
     return (
-      <div className="flex h-12 items-center justify-between gap-[11px] rounded-lg border border-input px-5 py-4">
+      <div className="flex h-12 items-center justify-between gap-[11px] rounded-lg border border-brandGray border-input px-5 py-4">
         <PWIcon />
         <input
           type={"password"}
           className={cn(
-            "flex h-5 grow items-center bg-background pl-1 text-base ring-offset-background file:bg-transparent file:text-base file:font-medium placeholder:text-muted-foreground focus-visible:outline-none disabled:opacity-50",
+            "flex h-5 grow items-center bg-background pl-1 text-base text-brandInput ring-offset-background file:bg-transparent file:text-base file:font-medium placeholder:text-muted-foreground focus-visible:outline-none disabled:opacity-50",
             className,
           )}
           value={value}

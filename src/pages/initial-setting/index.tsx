@@ -1,10 +1,10 @@
-import Nav from "@/components/Nav";
+import { Stack } from "@/utils/initialSettingFlow";
 
 const InitialQuiz = () => {
   return (
     <main className="flex h-full flex-col items-center justify-center">
       <div className="flex h-full flex-col justify-between px-4 py-20">
-        initialQuiz Page
+        <Stack />
       </div>
     </main>
   );
