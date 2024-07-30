@@ -26,6 +26,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "embla-carousel-react": "^8.1.7",
+    "eslint-plugin-import": "^2.29.1",
     "git": "^0.1.5",
     "lucide-react": "^0.414.0",
     "mime": "^4.0.4",
