@@ -35,7 +35,7 @@ const SignUp = () => {
       <main className="flex h-full flex-col items-center justify-between gap-10 px-4">
         <main className="flex w-full grow flex-col gap-12 pt-14">
           <div className="flex w-full flex-col gap-[7px]">
-            <div className="pl-[2px] text-xl font-bold">이메일</div>
+            <div className="pl-[2px] text-lg font-bold">이메일</div>
             <div className="flex flex-col gap-[10px]">
               <div className="flex gap-[10px]">
                 <div className="w-full">
@@ -58,7 +58,7 @@ const SignUp = () => {
             </div>
           </div>
           <div className="flex w-full flex-col gap-[7px]">
-            <div className="pl-[2px] text-xl font-bold">비밀번호</div>
+            <div className="pl-[2px] text-lg font-bold">비밀번호</div>
             <div className="flex flex-col gap-4">
               <PWInputField
                 placeholder="비밀번호"

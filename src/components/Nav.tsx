@@ -19,7 +19,7 @@ const Nav = (props: NavProps) => {
             <BackIcon className="pl-[4.5px]" />
           </Link>
           {NavTitle && (
-            <div className="flex-1 text-center text-2xl font-bold leading-10">
+            <div className="flex-1 text-center text-xl font-bold leading-10">
               {NavTitle}
             </div>
           )}

@@ -92,6 +92,7 @@ const SecondStepActivity: ActivityComponentType<SecondParams> = ({
               disabled={!isPass}
               params={{
                 step: step + 1,
+                nickname: nickname,
                 form,
               }}
             ></NextStepButton>

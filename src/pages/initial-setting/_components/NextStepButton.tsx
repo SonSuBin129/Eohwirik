@@ -36,6 +36,8 @@ const NextStepButton = (props: NextStepButtonProps) => {
     push(activityName, params || {});
   };
 
+  const buttonText = activityName === "MainActivity" ? "시작" : "다음";
+
   return (
     <Button
       variant={disabled ? "outline" : "brand"}
@@ -44,7 +46,7 @@ const NextStepButton = (props: NextStepButtonProps) => {
       disabled={disabled || isLoading}
       {...rest}
     >
-      {isLoading ? <LoaderCircleIcon className="animate-spin" /> : "다음"}
+      {isLoading ? <LoaderCircleIcon className="animate-spin" /> : buttonText}
     </Button>
   );
 };
