@@ -6,11 +6,13 @@ import ErrorMentBox from "./_components/ErrorMentBox";
 import { Button } from "@ui/components/ui/button";
 import { useNavigate } from "@/router";
 import { useSignUp } from "@/hooks/useSignUp";
+import LoadingButton from "@/components/LoadingButton";
 
 const SignUp = () => {
   const navigate = useNavigate();
 
   const {
+    signupMutation,
     userOption1,
     userOption2,
     checkOption2,
@@ -84,14 +86,12 @@ const SignUp = () => {
           </div>
         </main>
         <footer className="flex w-full flex-col gap-6 pb-7">
-          <Button
-            variant={AllPass ? "brand" : "outline"}
+          <LoadingButton
+            isLoading={signupMutation.isPending}
             disabled={!AllPass}
-            className="w-full text-xl font-semibold"
-            onClick={handleSignup}
-          >
-            가입하기
-          </Button>
+            handleClick={handleSignup}
+            buttonText="가입하기"
+          />
           <div className="flex justify-center gap-1 text-center text-[13px]">
             <p>이미 회원이신가요?</p>
             <p

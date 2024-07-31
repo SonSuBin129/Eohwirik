@@ -1,4 +1,4 @@
-import Characters from "@/components/Characters";
+import Characters from "@/components/character/Characters";
 import Logo from "@/components/Logo";
 import { Link } from "@/router";
 import { Button } from "@ui/components/ui/button";

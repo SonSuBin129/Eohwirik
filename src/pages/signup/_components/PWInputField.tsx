@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { cn } from "@ui/lib/utils";
-import PWIcon from "@/components/PWIcon";
+import PWIcon from "@/components/Icons/PWIcon";
 
 import CheckRegex from "@/pages/signup/_components/CheckRegex";
 

@@ -11,7 +11,7 @@ export const useMutationSignUp = () => {
     mutationFn: ({ userEmail, userPassword }: SignUpRequestParams) =>
       signup({ userEmail, userPassword }),
     onSuccess: (response: string) => {
-      if (response === "success") {
+      if (response !== "fail") {
         navigate("/initial-setting", { replace: true });
         return;
       }

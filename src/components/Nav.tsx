@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Logo from "@/components/Logo";
-import BackIcon from "@/components/BackIcon";
+import BackIcon from "@/components/Icons/BackIcon";
 import LevelIcon from "@/components/Level";
 
 interface NavProps {
@@ -25,10 +25,10 @@ const Nav = (props: NavProps) => {
           )}
         </>
       ) : (
-        <>
+        <div className="flex w-full items-center px-2">
           <Logo size="12%" className="mr-auto" />
           <LevelIcon />
-        </>
+        </div>
       )}
     </nav>
   );

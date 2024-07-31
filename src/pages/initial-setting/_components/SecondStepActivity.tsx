@@ -9,8 +9,8 @@ import { AppScreen } from "@stackflow/plugin-basic-ui";
 import { ActivityComponentType } from "@stackflow/react";
 import NextStepButton from "./NextStepButton";
 import CategoryItem from "./CategoryItem";
-import NumberIcon from "@/components/NumberIcon";
-import BackIcon from "@/components/BackIcon";
+import NumberIcon from "@/components/Icons/NumberIcon";
+import BackIcon from "@/components/Icons/BackIcon";
 import { useStackForm } from "@/hooks/useStackForm";
 
 type SecondParams = {

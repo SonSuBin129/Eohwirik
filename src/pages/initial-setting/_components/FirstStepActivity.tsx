@@ -9,7 +9,7 @@ import {
 } from "./Activity";
 
 import NextStepButton from "./NextStepButton";
-import NumberIcon from "@/components/NumberIcon";
+import NumberIcon from "@/components/Icons/NumberIcon";
 import ErrorMentBox from "./ErrorMentBox";
 import NickNameField from "./NickNameField";
 

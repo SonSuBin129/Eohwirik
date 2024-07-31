@@ -1,7 +1,7 @@
 import { cn } from "@ui/lib/utils";
 
-import ToastAlarmIcon from "@/components/ToastAlarmIcon";
-import PassIcon from "@/components/PassIcon";
+import ToastAlarmIcon from "@/components/Icons/ToastAlarmIcon";
+import PassIcon from "@/components/Icons/PassIcon";
 
 interface CheckRegexProps {
   isPass?: boolean;

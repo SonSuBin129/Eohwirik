@@ -10,7 +10,7 @@ import {
 } from "@ui/components/ui/toast";
 import { useToast } from "@ui/components/ui/use-toast";
 
-import ToastAlarmIcon from "@/components/ToastAlarmIcon";
+import ToastAlarmIcon from "@/components/Icons/ToastAlarmIcon";
 
 interface ToasterProps {
   className?: string;

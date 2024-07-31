@@ -1,8 +1,8 @@
 import * as React from "react";
 
 import { cn } from "@ui/lib/utils";
-import PWIcon from "@/components/PWIcon";
-import CheckPWIcon from "@/components/CheckPWIcon";
+import PWIcon from "@/components/Icons/PWIcon";
+import CheckPWIcon from "@/components/Icons/CheckPWIcon";
 
 import { useState } from "react";
 

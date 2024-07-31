@@ -1,4 +1,4 @@
-import BackIcon from "@/components/BackIcon";
+import BackIcon from "@/components/Icons/BackIcon";
 import {
   Activity,
   ActivityContent,
@@ -8,8 +8,8 @@ import {
 import NextStepButton from "@/pages/initial-setting/_components/NextStepButton";
 import { AppScreen } from "@stackflow/plugin-basic-ui";
 import { ActivityComponentType } from "@stackflow/react";
-import NumberIcon from "@/components/NumberIcon";
-import Characters from "@/components/Characters";
+import NumberIcon from "@/components/Icons/NumberIcon";
+import BlueCharacter from "@/components/character/BlueCharacter";
 
 type CompleteParams = {
   step: number;
@@ -37,32 +37,31 @@ const CompleteActivity: ActivityComponentType<CompleteParams> = ({
           <ActivityHeader>
             <NumberIcon number={step} />
             <section className="flex flex-col gap-[10px]">
-              <div className="flex flex-col gap-11 text-2xl font-bold">
+              <div className="flex flex-col gap-8 text-2xl font-bold">
                 <div>
-                  <p className="inline-block text-brand">입학 준비</p>
-                  <p className="inline-block">가 완료되었어요!</p>
+                  <p className="text-brand">[{nickname}]님,</p>
+                  <p>입학을 축하합니다!</p>
                 </div>
                 <div>
                   <div>
-                    <p className="inline-block">그럼 이제&nbsp;</p>
-                    <p className="inline-block text-brand">[{nickname}]님</p>
-                    <p className="inline-block">의</p>
+                    <p className="inline-block">이제&nbsp;</p>
+                    <p className="inline-block text-brand">[어휘릭]의</p>
+                    <p className="inline-block">의&nbsp;</p>
+                    <p className="inline-block text-brand">유생</p>
+                    <p className="inline-block">이 되셨습니다!</p>
                   </div>
-                  <div>
-                    <p className="inline-block text-brand">어휘력 점검</p>
-                    <p className="inline-block">을 시작할게요.</p>
-                  </div>
+                  <div>지금부터 함께 어휘력을 키워보아요!</div>
                 </div>
               </div>
               <div className="text-sm text-brandSubText">
-                여러분의 지식 건강을 바탕으로 맞춤형 학습 경로를 제공합니다.
-                [앱이름]이 단계별로 성장할 수 있도록 도와드릴게요!
+                시작할 준비가 되셨나요? [어휘릭]과 함께 즐겁고 유익한 학습
+                여정을 시작해보세요!
               </div>
             </section>
           </ActivityHeader>
           <section className="w-full grow">
             <div className="flex h-full items-center">
-              <Characters size={"90%"} />
+              <BlueCharacter size={"50%"} />
             </div>
           </section>
           <ActivityFooter>

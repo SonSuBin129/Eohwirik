@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { cn } from "@ui/lib/utils";
-import MailIcon from "@/components/MailIcon";
+import MailIcon from "@/components/Icons/MailIcon";
 
 export interface MailInputFieldProps
   extends React.InputHTMLAttributes<HTMLInputElement> {}
