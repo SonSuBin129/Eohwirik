@@ -1,5 +1,6 @@
-import { instance } from "@/api/instance";
 import { InitialSettingRequestParams } from "@/types/initialType";
+
+import { instance } from "@/api/instance";
 
 export const initialSetting = async ({
   userEmail,

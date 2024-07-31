@@ -1,7 +1,8 @@
-import { initialSetting } from "@/api/initial";
+import { useMutation } from "@tanstack/react-query";
 
 import { InitialSettingRequestParams } from "@/types/initialType";
-import { useMutation } from "@tanstack/react-query";
+
+import { initialSetting } from "@/api/initial";
 
 export const useMutationInitialSetting = () => {
   const mutation = useMutation({

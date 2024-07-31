@@ -12,7 +12,6 @@ export const FormSchema = z.object({
 export type FormSchemaType = z.infer<typeof FormSchema>;
 export type FormType = UseFormReturn<FormSchemaType, unknown, undefined>;
 
-//TODO: 나중에 api 연결해야함.
 export const useStackForm = () => {
   const { mutateAsync, isPending } = useMutationInitialSetting();
 

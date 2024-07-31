@@ -1,8 +1,10 @@
+import LoadingButton from "@/components/LoadingButton";
+
+import { FormType, useStackForm } from "@/hooks/useStackForm";
+
 import { useMyFlow } from "@/utils/useMyFlow";
 
 import { useNavigate } from "@/router";
-import { FormType, useStackForm } from "@/hooks/useStackForm";
-import LoadingButton from "@/components/LoadingButton";
 
 interface NextStepButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -17,12 +19,12 @@ interface NextStepButtonProps
 const NextStepButton = (props: NextStepButtonProps) => {
   const { activityName, disabled, params } = props;
   const { push } = useMyFlow();
+
   const { onSubmit, isPending: isLoading } = useStackForm();
   const navigate = useNavigate();
 
   const handleClick = async () => {
     if (activityName === "CompleteActivity" && params?.form) {
-      // TODO: API 연결 및 다른 작업
       const result = await onSubmit(params?.form.getValues());
       if (result === "fail") {
         return;

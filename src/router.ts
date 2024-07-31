@@ -8,6 +8,7 @@ export type Path =
   | `/bookmark`
   | `/home`
   | `/initial-setting`
+  | `/level`
   | `/login`
   | `/mypage`
   | `/signup`;
