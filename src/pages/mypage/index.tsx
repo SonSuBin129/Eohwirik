@@ -1,5 +1,7 @@
-import BottomNav from "@/components/BottomNav";
 import SubNav from "@/components/SubNav";
+import BottomNav from "@/components/BottomNav";
+
+import MainSection from "./_components/MainSection";
 
 const MyPage = () => {
   return (
@@ -8,7 +10,7 @@ const MyPage = () => {
         <SubNav NavTitle="마이페이지" />
       </header>
       <main className="flex h-full flex-col items-center justify-start gap-10 px-4">
-        마이페이지
+        <MainSection />
       </main>
       <header className="sticky bottom-0 left-0 z-10 border-t-[1px] border-solid border-brandGray bg-white py-2">
         <BottomNav />

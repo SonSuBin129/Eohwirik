@@ -1,5 +1,5 @@
-import { Toaster } from "@ui/components/ui/toaster";
 import { Outlet } from "react-router-dom";
+import { Toaster } from "@ui/components/ui/toaster";
 
 const App = () => {
   return (

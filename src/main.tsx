@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom/client";
-import { Routes } from "@generouted/react-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Routes } from "@generouted/react-router";
 
 import "../ui/globals.css";
 
