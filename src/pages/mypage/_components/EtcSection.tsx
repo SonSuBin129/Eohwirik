@@ -1,7 +1,18 @@
+import { useQueryLogout } from "@/hooks/queries/useQueryLogout";
+
+import { useNavigate } from "@/router";
+
 const EtcSection = () => {
-  const handleLogOut = () => {
-    //TODO: 로그아웃 API 연결
-    localStorage.removeItem("userEmail");
+  const navigate = useNavigate();
+  const { refetch } = useQueryLogout();
+
+  const handleLogOut = async () => {
+    try {
+      await refetch();
+      navigate("/login", { replace: true });
+    } catch (error) {
+      console.error("로그아웃 실패:", error);
+    }
   };
 
   return (

@@ -18,6 +18,11 @@ export const login = async ({
   return data;
 };
 
+export const logout = async () => {
+  const { data } = await instance.get("/user/logout");
+  return data;
+};
+
 export const checkEmail = async ({ userEmail }: CheckEmailParams) => {
   const { data } = await instance.post("/user/email-check", {
     userEmail,
