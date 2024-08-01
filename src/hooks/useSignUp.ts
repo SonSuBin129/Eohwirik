@@ -1,6 +1,7 @@
-import { useMutationCheckEmail } from "@/hooks/mutation/useMutationCheckEmail";
-import { useMutationSignUp } from "@/hooks/mutation/useMutationSignUp";
 import { useEffect, useState } from "react";
+
+import { useMutationSignUp } from "@/hooks/mutation/useMutationSignUp";
+import { useMutationCheckEmail } from "@/hooks/mutation/useMutationCheckEmail";
 
 export const useSignUp = () => {
   const checkmailMutation = useMutationCheckEmail();
@@ -144,6 +145,7 @@ export const useSignUp = () => {
   };
 
   return {
+    checkmailMutation,
     signupMutation,
     userOption1,
     userOption2,

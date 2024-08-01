@@ -3,6 +3,7 @@ import { Button } from "@ui/components/ui/button";
 
 interface LoadingButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  className?: string;
   disabled?: boolean;
   isLoading: boolean;
   buttonText: string;
@@ -10,11 +11,12 @@ interface LoadingButtonProps
 }
 
 const LoadingButton = (props: LoadingButtonProps) => {
-  const { disabled, isLoading, buttonText, handleClick, ...rest } = props;
+  const { className, disabled, isLoading, buttonText, handleClick, ...rest } =
+    props;
   return (
     <Button
       variant={disabled ? "outline" : "brand"}
-      className="w-full text-xl font-semibold"
+      className={className ? className : "w-full text-xl font-semibold"}
       onClick={handleClick}
       disabled={disabled || isLoading}
       {...rest}

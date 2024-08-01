@@ -1,17 +1,21 @@
+import { Button } from "@ui/components/ui/button";
+
+import Nav from "@/components/Nav";
+import LoadingButton from "@/components/LoadingButton";
+
+import { useSignUp } from "@/hooks/useSignUp";
+
 import { PWInputField } from "./_components/PWInputField";
 import { MailInputField } from "./_components/MailInputField";
-import Nav from "@/components/Nav";
 import ErrorMentBox from "./_components/ErrorMentBox";
 
-import { Button } from "@ui/components/ui/button";
 import { useNavigate } from "@/router";
-import { useSignUp } from "@/hooks/useSignUp";
-import LoadingButton from "@/components/LoadingButton";
 
 const SignUp = () => {
   const navigate = useNavigate();
 
   const {
+    checkmailMutation,
     signupMutation,
     userOption1,
     userOption2,
@@ -48,13 +52,13 @@ const SignUp = () => {
                     autoComplete="off"
                   />
                 </div>
-                <Button
-                  variant={isOption1Pass ? "brand" : "outline"}
-                  className="h-full w-fit rounded-[9px]"
-                  onClick={handleUnique}
-                >
-                  중복 확인
-                </Button>
+                <LoadingButton
+                  className="h-full w-28 rounded-[9px] font-normal"
+                  isLoading={checkmailMutation.isPending}
+                  disabled={!isOption1Pass}
+                  handleClick={handleUnique}
+                  buttonText="중복 확인"
+                />
               </div>
               <ErrorMentBox ment={errorMent.option1} isPass={isOption1Unique} />
             </div>
