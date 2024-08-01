@@ -16,7 +16,7 @@ dist-ssr
 .env
 
 # 이미지 파일
-src/assets/*
+/src/assets/*
 
 
 # Editor directories and files
