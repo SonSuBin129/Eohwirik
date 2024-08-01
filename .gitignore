@@ -15,6 +15,10 @@ dist-ssr
 # env 파일
 .env
 
+# 이미지 파일
+src/assets/*
+
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
