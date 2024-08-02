@@ -16,7 +16,7 @@ const LoadingButton = (props: LoadingButtonProps) => {
   return (
     <Button
       variant={disabled ? "outline" : "brand"}
-      className={className ? className : "w-full text-xl font-semibold"}
+      className={className ? className : "w-full text-xl font-bold"}
       onClick={handleClick}
       disabled={disabled || isLoading}
       {...rest}

@@ -11,6 +11,7 @@ export type Path =
   | `/level`
   | `/login`
   | `/mypage`
+  | `/quiz`
   | `/signup`;
 
 export type Params = {};

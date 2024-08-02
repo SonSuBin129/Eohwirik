@@ -4,9 +4,11 @@ import { basicUIPlugin } from "@stackflow/plugin-basic-ui";
 
 import "@stackflow/plugin-basic-ui/index.css";
 
-import SecondStepActivity from "@/pages/initial-setting/_components/SecondStepActivity";
-import FirstStepActivity from "@/pages/initial-setting/_components/FirstStepActivity";
-import CompleteActivity from "@/pages/initial-setting/_components/CompleteActivity";
+import VocaActivity from "@/pages/quiz/_components/VocaActivity";
+import QuizAnswerActivity from "@/pages/quiz/_components/QuizAnswerActivity";
+import QuizActivity from "@/pages/quiz/_components/QuizActivity";
+import MainActivity from "@/pages/quiz/_components/MainActivity";
+import CompleteActivity from "@/pages/quiz/_components/CompleteActivity";
 
 export const { Stack, activities } = stackflow({
   transitionDuration: 500,
@@ -17,11 +19,13 @@ export const { Stack, activities } = stackflow({
     }),
   ],
   activities: {
-    FirstStepActivity,
-    SecondStepActivity,
+    MainActivity,
+    QuizActivity,
+    QuizAnswerActivity,
     CompleteActivity,
+    VocaActivity,
   },
-  initialActivity: () => "FirstStepActivity",
+  initialActivity: () => "MainActivity",
 });
 
 export type TypeActivities = typeof activities;

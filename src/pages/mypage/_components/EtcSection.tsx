@@ -1,18 +1,19 @@
-import { useQueryLogout } from "@/hooks/queries/useQueryLogout";
+import { useMutationLogout } from "@/hooks/mutation/useMutationLogout";
 
 import { useNavigate } from "@/router";
 
 const EtcSection = () => {
   const navigate = useNavigate();
-  const { refetch } = useQueryLogout();
+  const mutation = useMutationLogout();
 
-  const handleLogOut = async () => {
-    try {
-      await refetch();
-      navigate("/login", { replace: true });
-    } catch (error) {
-      console.error("로그아웃 실패:", error);
-    }
+  const handleLogOut = () => {
+    mutation.mutate(undefined, {
+      onSuccess: data => {
+        if (data === "invalidate") {
+          navigate("/login", { replace: true });
+        }
+      },
+    });
   };
 
   return (

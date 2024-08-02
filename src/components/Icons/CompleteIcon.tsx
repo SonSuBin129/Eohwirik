@@ -2,7 +2,7 @@ import CompleteIconImage from "@/assets/CompleteIconImage.png";
 
 const CompleteIcon = () => {
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center">
       <img
         src={CompleteIconImage}
         className="h-auto w-7"
