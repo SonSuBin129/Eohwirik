@@ -1,43 +1,19 @@
 import { cn } from "@ui/lib/utils";
 import { Button } from "@ui/components/ui/button";
 
-import { useQuizFlow } from "@/utils/useQuizFlow";
-
 interface QuizItemProps {
   title: string;
   isAnswer: boolean;
-  chapterId: number;
-  chapterName: string;
   isSelected: boolean; // 이미 선택된 상태인지 확인
   onClick: () => void; // 클릭 이벤트 핸들러를 부모에서 전달받음
-  disabled: boolean; // 퀴즈가 비활성화되어야 하는지 여부를 전달받음
+  buttonCheck: boolean; //버튼을 통해서 확인을 했는가 여부
 }
 
 const QuizItem = (props: QuizItemProps) => {
-  const {
-    title,
-    isAnswer,
-    chapterId,
-    chapterName,
-    isSelected,
-    onClick,
-    disabled,
-  } = props;
-  const { push } = useQuizFlow();
+  const { title, isAnswer, isSelected, onClick, buttonCheck } = props;
 
   const handleClick = () => {
-    if (disabled) return; // 비활성화된 경우 클릭을 무시
     onClick(); // 부모 컴포넌트에서 전달된 클릭 핸들러 실행
-
-    setTimeout(() => {
-      push("QuizAnswerActivity", {
-        chapterId: chapterId,
-        chapterName: chapterName,
-        quizId: 1,
-        quizAnswer: isAnswer ? "정답" : "오답",
-        step: 7,
-      });
-    }, 2000); // 2초 후에 push 함수 호출
   };
 
   const ment = isAnswer ? "정답입니다." : "오답입니다.";
@@ -45,12 +21,19 @@ const QuizItem = (props: QuizItemProps) => {
   return (
     <div className="flex flex-col gap-[5px]">
       <Button
-        variant={isSelected && isAnswer ? "category_brand" : "category_outline"}
+        variant={
+          isSelected
+            ? isAnswer && buttonCheck
+              ? "category_brand"
+              : "category_outline"
+            : "category_outline"
+        }
         className={cn("h-14 w-full text-xl font-bold", {
-          "border-brandError text-brandError": !isAnswer && isSelected,
+          "border-brandError text-brandError":
+            isSelected && !isAnswer && buttonCheck,
+          "border-brand": isSelected && !buttonCheck,
         })}
         onClick={handleClick}
-        disabled={disabled} // 비활성화 상태를 버튼에 적용
       >
         {title}
       </Button>
@@ -63,7 +46,7 @@ const QuizItem = (props: QuizItemProps) => {
           },
         )}
       >
-        {isSelected && ment}
+        {buttonCheck && isSelected && ment}
       </div>
     </div>
   );

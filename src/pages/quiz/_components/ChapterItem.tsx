@@ -2,20 +2,30 @@ import { cn } from "@ui/lib/utils";
 
 import LearnedIcon from "@/components/Icons/LearnedIcon";
 
+import { useQueryQuizList } from "@/hooks/queries/useQueryQuizList";
+
 import { useQuizFlow } from "@/utils/useQuizFlow";
 
-interface ChapterComponentProps {
+interface ChapterItemProps {
   isLearned: boolean;
   chapterId: number;
   chapterName: string;
 }
 
-const ChapterComponent = (props: ChapterComponentProps) => {
+const ChapterItem = (props: ChapterItemProps) => {
   const { isLearned, chapterId, chapterName } = props;
   const { push } = useQuizFlow();
 
+  const { data } = useQueryQuizList(chapterId);
   const handleClick = () => {
-    push("QuizActivity", { chapterId: chapterId, chapterName: chapterName });
+    if (data) {
+      push("QuizActivity", {
+        chapterId,
+        chapterName,
+        quizList: data,
+        step: 1,
+      });
+    }
   };
 
   return (
@@ -35,4 +45,4 @@ const ChapterComponent = (props: ChapterComponentProps) => {
     </div>
   );
 };
-export default ChapterComponent;
+export default ChapterItem;

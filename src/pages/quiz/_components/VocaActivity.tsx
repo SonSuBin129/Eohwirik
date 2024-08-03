@@ -1,17 +1,15 @@
 import { ActivityComponentType } from "@stackflow/react";
 import { AppScreen } from "@stackflow/plugin-basic-ui";
 
-import CompleteIcon from "@/components/Icons/CompleteIcon";
 import BackIcon from "@/components/Icons/BackIcon";
 
-import {
-  Activity,
-  ActivityHeader,
-  ActivityFooter,
-  ActivityContent,
-} from "./Activity";
+import { useQueryAllQuizzes } from "@/hooks/queries/useQueryAllQuizzes";
 
-import NextButton from "@/pages/quiz/_components/NextButton";
+import { ScrapWordDTO } from "@/types/quizType";
+
+import VocaItem from "./VocaItem";
+import NextButton from "./NextButton";
+import { Activity, ActivityFooter, ActivityContent } from "./Activity";
 
 type VocaParams = {
   chapterId: number;
@@ -20,6 +18,12 @@ type VocaParams = {
 
 const VocaActivity: ActivityComponentType<VocaParams> = ({ params }) => {
   const { chapterId, chapterName } = params;
+
+  const userEmail = localStorage.getItem("userEmail");
+  const { data: scrapQuizList } = useQueryAllQuizzes({
+    userEmail: userEmail!,
+    chapterId: chapterId,
+  });
 
   return (
     <AppScreen
@@ -36,14 +40,26 @@ const VocaActivity: ActivityComponentType<VocaParams> = ({ params }) => {
       <Activity>
         <ActivityContent>
           <main className="flex flex-col gap-5 px-4">
-            <div>지금 voca</div>
-            <section className="flex flex-col gap-[23px]">
-              <div>chapterId: {chapterId}</div>
-              <div>chapterName: {chapterName}</div>
+            <section className="flex flex-col gap-[23px] pt-3">
+              {scrapQuizList.map((item: ScrapWordDTO) => (
+                <VocaItem
+                  key={item.id}
+                  id={item.id}
+                  isScrap={item.scrap}
+                  word={item.word}
+                  wordClass={item.wordClass}
+                  description={item.description}
+                  example={item.example}
+                />
+              ))}
             </section>
           </main>
           <ActivityFooter>
-            <NextButton activityName={"MainActivity" as never} />
+            <NextButton
+              activityName={"MainActivity" as never}
+              chapterId={chapterId}
+              chapterName={chapterName}
+            />
           </ActivityFooter>
         </ActivityContent>
       </Activity>

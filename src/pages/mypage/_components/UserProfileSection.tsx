@@ -1,34 +1,9 @@
-import { useEffect, useState } from "react";
-
 import BlueCharacter from "@/components/character/BlueCharacter";
 
-import { useMutationMyPage } from "@/hooks/mutation/useMutationMyPage";
-
-import { useNavigate } from "@/router";
+import { useManageUser } from "@/hooks/useManageUser";
 
 const UserProfileSection = () => {
-  const navigate = useNavigate();
-  const mutation = useMutationMyPage();
-
-  const [nickname, setNickName] = useState("");
-  const [userLevel, setUserLevel] = useState("");
-
-  useEffect(() => {
-    const userEmail = localStorage.getItem("userEmail");
-    if (!userEmail) {
-      navigate("/login", { replace: true });
-    } else {
-      mutation.mutate(
-        { userEmail: userEmail },
-        {
-          onSuccess: data => {
-            setNickName(data.userName);
-            setUserLevel(data.level);
-          },
-        },
-      );
-    }
-  }, []);
+  const { nickname, userLevel } = useManageUser();
 
   return (
     <div className="flex w-full flex-col items-center gap-4">

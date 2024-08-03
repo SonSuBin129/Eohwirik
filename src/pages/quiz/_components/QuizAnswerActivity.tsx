@@ -4,6 +4,10 @@ import { AppScreen } from "@stackflow/plugin-basic-ui";
 import NumberIcon from "@/components/Icons/NumberIcon";
 import BackIcon from "@/components/Icons/BackIcon";
 
+import { useQueryQuizAnswer } from "@/hooks/queries/useQueryQuizAnswer";
+
+import { QuizDTO, WordDTO } from "@/types/quizType";
+
 import {
   Activity,
   ActivityContent,
@@ -17,15 +21,25 @@ import NextButton from "@/pages/quiz/_components/NextButton";
 type QuizAnswerParams = {
   chapterId: number;
   chapterName: string;
-  quizId: number;
-  quizAnswer: string;
   step: number;
+  quizList: QuizDTO[];
 };
 
 const QuizAnswerActivity: ActivityComponentType<QuizAnswerParams> = ({
   params,
 }) => {
-  const { chapterId, chapterName, quizId, quizAnswer, step } = params;
+  const { chapterId, chapterName, step, quizList } = params;
+
+  const quiz = quizList.find(q => q.id === step);
+  const { data: quizAnswer } = useQueryQuizAnswer(step);
+
+  // 퀴즈 답안 항목 배열 생성
+  const answerItems = [
+    quizAnswer?.answerWord,
+    quizAnswer?.wrongWord1,
+    quizAnswer?.wrongWord2,
+    quizAnswer?.wrongWord3,
+  ].filter(Boolean);
 
   return (
     <AppScreen
@@ -43,49 +57,43 @@ const QuizAnswerActivity: ActivityComponentType<QuizAnswerParams> = ({
         <ActivityContent>
           <main className="flex flex-col gap-5 px-4">
             <ActivityHeader>
-              <NumberIcon number={1} />
+              <NumberIcon number={step} />
               <h1 className="flex gap-2 text-2xl font-bold">
-                <div>학력/경력을</div>
-                <div className="text-brand">[&emsp;&emsp;&emsp;]</div>
-                <div>한 의원</div>
+                <div>{quiz?.question1}</div>
+                <div className="text-brand">[&emsp;{quiz?.answer}&emsp;]</div>
+                <div>{quiz?.question2}</div>
               </h1>
             </ActivityHeader>
             <section className="flex flex-col gap-[23px]">
-              <QuizAnswerItem
-                isAnswer={true}
-                word={"날조"}
-                wordClass={"품사"}
-                description={"예시문장"}
-                example="예문예문예문예문예문예문예문예문예문예문예문예문예문예문예문예문"
-                explanation="설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명"
-              />
-              <QuizAnswerItem
-                word={"날조"}
-                wordClass={"품사"}
-                description={"예시문장"}
-                example="예문예문예문예문예문예문예문예문예문예문예문예문예문예문예문예문"
-              />
-              <QuizAnswerItem
-                word={"날조"}
-                wordClass={"품사"}
-                description={"예시문장"}
-                example="예문예문예문예문예문예문예문예문예문예문예문예문예문예문예문예문"
-              />
-              <div>chapterId: {chapterId}</div>
-              <div>chapterName: {chapterName}</div>
-              <div>quizId: {quizId}</div>
-              <div>quizAnswer: {quizAnswer}</div>
+              {answerItems.map((item, index) => (
+                <QuizAnswerItem
+                  key={index}
+                  isAnswer={item === quizAnswer?.answerWord}
+                  word={item.word}
+                  wordClass={item.wordClass}
+                  description={item.description}
+                  example={item.example}
+                  explanation={
+                    (item as WordDTO).explanation
+                      ? (item as WordDTO).explanation
+                      : undefined
+                  }
+                />
+              ))}
             </section>
           </main>
           <ActivityFooter>
             <NextButton
               activityName={
-                step >= 7
+                step >= quizList.length
                   ? ("CompleteActivity" as never)
                   : ("QuizActivity" as never)
               }
+              chapterId={chapterId}
+              chapterName={chapterName}
               params={{
                 step: step + 1,
+                quizLsit: quizList,
               }}
             />
           </ActivityFooter>
