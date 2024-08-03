@@ -14,6 +14,7 @@ const MainActivity: ActivityComponentType = () => {
   const location = useLocation();
   const { state } = location;
   const { categoryId, categoryName } = state;
+  localStorage.setItem("categoryId", categoryId);
 
   const { data: learningData } = useQueryCategoryLearningRate(categoryId);
 

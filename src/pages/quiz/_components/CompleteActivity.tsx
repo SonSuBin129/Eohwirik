@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ActivityComponentType } from "@stackflow/react";
 import { AppScreen } from "@stackflow/plugin-basic-ui";
 
@@ -6,6 +6,8 @@ import CompleteIcon from "@/components/Icons/CompleteIcon";
 import BackIcon from "@/components/Icons/BackIcon";
 
 import { useMutationCompleteQuiz } from "@/hooks/mutation/useMutationCompleteQuiz";
+
+import { useQuizFlow } from "@/utils/useQuizFlow";
 
 import {
   Activity,
@@ -15,6 +17,12 @@ import {
 } from "./Activity";
 
 import NextButton from "@/pages/quiz/_components/NextButton";
+import TransitionalComplete from "@/assets/TransitionalComplete.png";
+import NewsComplete from "@/assets/NewsComplete.png";
+import LegalComplete from "@/assets/LegalComplete.png";
+import EveryDayComplete from "@/assets/EveryDayComplete.png";
+import BusinessComplete from "@/assets/BusinessComplete.png";
+import AcademyComplete from "@/assets/AcademyComplete.png";
 
 type CompleteParams = {
   chapterId: number;
@@ -25,6 +33,8 @@ const CompleteActivity: ActivityComponentType<CompleteParams> = ({
   params,
 }) => {
   const { chapterId, chapterName } = params;
+  const [imageSrc, setImageSrc] = useState<string | undefined>(undefined);
+  const [isLoading, setIsLoading] = useState(false); // 로딩 상태 추가
 
   const mutation = useMutationCompleteQuiz();
   const userEmail = localStorage.getItem("userEmail");
@@ -36,6 +46,35 @@ const CompleteActivity: ActivityComponentType<CompleteParams> = ({
       });
     }
   }, [userEmail, chapterId]);
+
+  const { push } = useQuizFlow();
+  const handleNext = () => {
+    setIsLoading(true); // 로딩 시작
+    push("VocaActivity", {
+      chapterId: chapterId,
+      chapterName: chapterName,
+    });
+  };
+
+  const categoryId = localStorage.getItem("categoryId");
+
+  const images = [
+    { id: 1, img: EveryDayComplete },
+    { id: 2, img: BusinessComplete },
+    { id: 3, img: TransitionalComplete },
+    { id: 4, img: AcademyComplete },
+    { id: 5, img: LegalComplete },
+    { id: 6, img: NewsComplete },
+  ];
+
+  useEffect(() => {
+    if (categoryId) {
+      const image = images.find(image => image.id.toString() === categoryId);
+      if (image) {
+        setImageSrc(image.img);
+      }
+    }
+  }, [categoryId]);
 
   return (
     <AppScreen
@@ -69,12 +108,24 @@ const CompleteActivity: ActivityComponentType<CompleteParams> = ({
                 </div>
               </section>
             </ActivityHeader>
+            <div className="flex w-full items-center justify-center">
+              {imageSrc && (
+                <img
+                  src={imageSrc}
+                  className="w-[361]"
+                  loading="lazy"
+                  alt="Complete"
+                />
+              )}
+            </div>
           </main>
           <ActivityFooter>
             <NextButton
               activityName={"VocaActivity" as never}
               chapterId={chapterId}
               chapterName={chapterName}
+              isLoading={isLoading}
+              onClick={handleNext}
             />
           </ActivityFooter>
         </ActivityContent>

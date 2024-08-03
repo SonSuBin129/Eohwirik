@@ -36,7 +36,6 @@ const NextButton = (props: NextButtonProps) => {
   const [buttonText, setButtonText] = useState("");
   const stack = useStack();
   let popCounts = stack.activities.length;
-  console.log(popCounts);
 
   useEffect(() => {
     if (activityName === "QuizAnswerActivity") {
