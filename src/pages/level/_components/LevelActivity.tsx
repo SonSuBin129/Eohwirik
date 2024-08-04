@@ -4,8 +4,9 @@ import { AppScreen } from "@stackflow/plugin-basic-ui";
 
 import Nav from "@/components/Nav";
 
-import { useManageUser } from "@/hooks/useManageUser";
-import { useQueryGetLevelStatus } from "@/hooks/queries/useQueryGetLevelStatus";
+import { useMutationLevelPage } from "@/hooks/mutation/useMutationLevelPage";
+
+import { getLevelResponse } from "@/types/levelType";
 
 import { useLevelFlow } from "@/utils/useLevelFlow";
 
@@ -28,15 +29,28 @@ const images = [
 
 const LevelActivity: ActivityComponentType = () => {
   const [imageSrc, setImageSrc] = useState<string | undefined>(undefined);
+  const [userLevel, setUserLevel] = useState("");
+  const [wordCount, setWordCount] = useState(0);
+  const [wordMaxCount, setWordMaxCount] = useState(0);
 
   const { push } = useLevelFlow();
+  const mutation = useMutationLevelPage();
 
-  //   const { data } = useQueryGetLevelStatus();
-  //   console.log(data);
-  // const {wordCount, level, wordMaxCount} = data;
-
-  //나중에 api로 불러온 걸로 수정하기
-  const { userLevel } = useManageUser();
+  useEffect(() => {
+    const userEmail = localStorage.getItem("userEmail");
+    if (userEmail) {
+      mutation.mutate(
+        { userEmail: userEmail },
+        {
+          onSuccess: (data: getLevelResponse) => {
+            setUserLevel(data.level);
+            setWordCount(data.wordCount);
+            setWordMaxCount(data.wordMaxCount);
+          },
+        },
+      );
+    }
+  }, []);
 
   useEffect(() => {
     if (userLevel) {
@@ -58,7 +72,7 @@ const LevelActivity: ActivityComponentType = () => {
         className="flex flex-col items-center justify-between px-4 pb-7"
         style={{ height: "calc(100% - 56px)" }}
       >
-        <LevelHeader onClick={handleClick} />
+        <LevelHeader onClick={handleClick} userLevel={userLevel} />
         <section className="flex w-full items-center justify-center">
           <img
             src={imageSrc}
@@ -67,7 +81,7 @@ const LevelActivity: ActivityComponentType = () => {
             alt="levelImage"
           />
         </section>
-        <LevelFooter />
+        <LevelFooter wordCount={wordCount} wordMaxCount={wordMaxCount} />
       </main>
     </AppScreen>
   );

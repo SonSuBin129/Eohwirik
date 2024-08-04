@@ -1,9 +1,10 @@
 interface LevelHeaderProps {
+  userLevel: string;
   onClick: () => void;
 }
 
 const LevelHeader = (props: LevelHeaderProps) => {
-  const { onClick } = props;
+  const { onClick, userLevel } = props;
 
   return (
     <section
@@ -17,7 +18,7 @@ const LevelHeader = (props: LevelHeaderProps) => {
       </div>
       <div className="flex flex-col gap-1">
         <div className="text-xl font-bold">나의 현재 관직은?</div>
-        <div className="text-[40px] font-extrabold">유생</div>
+        <div className="text-[40px] font-extrabold">{userLevel}</div>
       </div>
     </section>
   );
