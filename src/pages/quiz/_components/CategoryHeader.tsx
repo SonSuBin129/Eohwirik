@@ -44,7 +44,7 @@ const CategoryHeader = (props: CategoryHeaderProps) => {
             <h1 className="self-end text-[75px] leading-[75px] text-[#547AFF]">
               {learningLearned}
             </h1>
-            <p className="mb-[11px] self-end text-base text-brandSubText">
+            <p className="mb-[10px] self-end text-base text-brandSubText">
               /{learningTotal}개
             </p>
           </div>

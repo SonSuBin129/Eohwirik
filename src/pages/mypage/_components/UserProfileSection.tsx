@@ -46,11 +46,10 @@ const UserProfileSection = () => {
     }
   }, [userLevel]);
 
-  //TODO: 이미지 src profileImage로 변경
   return (
     <div className="flex w-full flex-col items-center gap-4">
       <div className="flex aspect-square w-[28%] items-center justify-center rounded-full">
-        <img src={FirstLevelProfile} loading="lazy" />
+        <img src={profileImage} loading="lazy" />
       </div>
       <div className="flex w-full flex-col gap-1 text-center">
         <div className="text-2xl font-bold text-brand">[{nickname}]</div>
