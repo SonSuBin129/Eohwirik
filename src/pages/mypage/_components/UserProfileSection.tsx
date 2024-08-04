@@ -49,7 +49,7 @@ const UserProfileSection = () => {
   //TODO: 이미지 src profileImage로 변경
   return (
     <div className="flex w-full flex-col items-center gap-4">
-      <div className="flex aspect-square w-[28%] items-center justify-center rounded-full border border-[#c6c6c6]">
+      <div className="flex aspect-square w-[28%] items-center justify-center rounded-full">
         <img src={FirstLevelProfile} loading="lazy" />
       </div>
       <div className="flex w-full flex-col gap-1 text-center">
