@@ -23,10 +23,10 @@ const ActivityContent = ({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => {
   return (
-    <main className="flex h-full grow flex-col items-center px-4">
+    <main className="flex h-full grow flex-col items-center">
       <section
         className={cn(
-          "flex w-full grow flex-col justify-center gap-3 pb-10",
+          "flex w-full grow flex-col justify-center gap-3 px-4 pb-10",
           className,
         )}
         {...props}

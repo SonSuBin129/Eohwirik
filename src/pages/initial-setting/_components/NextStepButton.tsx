@@ -1,3 +1,6 @@
+import { LoaderCircleIcon } from "lucide-react";
+import { Button } from "@ui/components/ui/button";
+
 import LoadingButton from "@/components/LoadingButton";
 
 import { FormType, useStackForm } from "@/hooks/useStackForm";
@@ -42,12 +45,28 @@ const NextStepButton = (props: NextStepButtonProps) => {
   const buttonText = activityName === "MainActivity" ? "시작" : "다음";
 
   return (
-    <LoadingButton
-      buttonText={buttonText}
-      disabled={disabled}
-      isLoading={isLoading}
-      handleClick={handleClick}
-    />
+    <>
+      {buttonText === "시작" ? (
+        <Button
+          variant="brand"
+          className="w-full rounded-none py-2 text-xl font-bold"
+          onClick={handleClick}
+        >
+          {isLoading ? (
+            <LoaderCircleIcon className="animate-spin" />
+          ) : (
+            buttonText
+          )}
+        </Button>
+      ) : (
+        <LoadingButton
+          buttonText={buttonText}
+          disabled={disabled}
+          isLoading={isLoading}
+          handleClick={handleClick}
+        />
+      )}
+    </>
   );
 };
 

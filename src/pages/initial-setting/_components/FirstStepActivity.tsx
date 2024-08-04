@@ -1,19 +1,18 @@
-import { AppScreen } from "@stackflow/plugin-basic-ui";
+import { useState } from "react";
 import { ActivityComponentType } from "@stackflow/react";
+import { AppScreen } from "@stackflow/plugin-basic-ui";
 
+import NumberIcon from "@/components/Icons/NumberIcon";
+
+import NickNameField from "./NickNameField";
+import NextStepButton from "./NextStepButton";
+import ErrorMentBox from "./ErrorMentBox";
 import {
   Activity,
   ActivityContent,
   ActivityHeader,
   ActivityFooter,
 } from "./Activity";
-
-import NextStepButton from "./NextStepButton";
-import NumberIcon from "@/components/Icons/NumberIcon";
-import ErrorMentBox from "./ErrorMentBox";
-import NickNameField from "./NickNameField";
-
-import { useState } from "react";
 
 const FirstStepActivity: ActivityComponentType = () => {
   const step = 1;
