@@ -27,7 +27,7 @@ const Nav = (props: NavProps) => {
         </>
       ) : (
         <div className="flex w-full items-center px-2">
-          <Logo size="12%" className="mr-auto" />
+          <Logo size="22%" className="mr-auto" />
           <Link to="/level">
             <LevelIcon />
           </Link>

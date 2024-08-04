@@ -2,7 +2,7 @@ import { ChangeEvent, useState } from "react";
 import { useToast } from "@ui/components/ui/use-toast";
 import { Button } from "@ui/components/ui/button";
 
-import Logo from "@/components/Logo";
+import LoginLogo from "@/components/LoginLogo";
 import LoadingButton from "@/components/LoadingButton";
 
 import { useMutationLogin } from "@/hooks/mutation/useMutationLogin";
@@ -67,10 +67,7 @@ const Login = () => {
 
   return (
     <main className="flex h-full flex-col items-center justify-center gap-10 px-4">
-      <section className="flex flex-col items-center justify-center gap-3">
-        <Logo size={"20%"} />
-        <div>서비스명 이미지로 들어올 것</div>
-      </section>
+      <LoginLogo />
       <main className="flex w-full flex-col gap-5">
         <MailInputField
           placeholder="이메일을 입력해주세요."
