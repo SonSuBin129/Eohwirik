@@ -3,3 +3,7 @@ export type getLevelResponse = {
   level: string;
   wordMaxCount: number;
 };
+
+export type getLevelParams = {
+  userEmail: string;
+};

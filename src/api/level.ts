@@ -1,9 +1,11 @@
-import { getLevelResponse } from "@/types/levelType";
+import { getLevelResponse, getLevelParams } from "@/types/levelType";
 
 import { instance } from "@/api/instance";
 
-export const getLevelStatus = async () => {
-  const { data } = await instance.get<getLevelResponse>("/user/levelpage");
+export const getLevelStatus = async ({ userEmail }: getLevelParams) => {
+  const { data } = await instance.post<getLevelResponse>("/user/levelpage", {
+    userEmail,
+  });
 
   return data;
 };
