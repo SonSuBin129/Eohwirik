@@ -1,12 +1,14 @@
 import styled, { keyframes } from "styled-components";
 import React from "react";
 
-interface DountChartProps {
+interface DoughnutChartProps {
   percent: number;
   size?: string;
 }
 
-const DountChart: React.FC<DountChartProps> = (props: DountChartProps) => {
+const DoughnutChart: React.FC<DoughnutChartProps> = (
+  props: DoughnutChartProps,
+) => {
   const { percent, size = "44px" } = props;
   const radius = 80;
 
@@ -46,7 +48,7 @@ const DountChart: React.FC<DountChartProps> = (props: DountChartProps) => {
   );
 };
 
-export default DountChart;
+export default DoughnutChart;
 
 const Chart = styled.div<{ size: string }>`
   width: ${({ size }) => size};

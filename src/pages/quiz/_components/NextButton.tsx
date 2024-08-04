@@ -7,6 +7,8 @@ import { QuizDTO } from "@/types/quizType";
 
 import { useQuizFlow } from "@/utils/useQuizFlow";
 
+import { useNavigate } from "@/router";
+
 interface NextButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   activityName: never;
@@ -37,6 +39,8 @@ const NextButton = (props: NextButtonProps) => {
   const stack = useStack();
   let popCounts = stack.activities.length;
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (activityName === "QuizAnswerActivity") {
       setButtonText("정답 확인");
@@ -54,10 +58,17 @@ const NextButton = (props: NextButtonProps) => {
       // 현재 스택의 모든 액티비티를 가져와서 pop 처리
       startTransition(() => {
         while (popCounts > 0) {
-          pop();
+          pop({ animate: false });
           popCounts--;
         }
       });
+      const categoryId = localStorage.getItem("categoryId");
+      const categoryName = localStorage.getItem("categoryName");
+      navigate("/quiz", {
+        state: { categoryId: categoryId, categoryName: categoryName },
+        replace: true,
+      });
+      return;
     }
     push(activityName, { chapterId, chapterName, ...params } || {});
   };

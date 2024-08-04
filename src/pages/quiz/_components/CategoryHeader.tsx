@@ -1,5 +1,5 @@
 import ProgressBar from "@/components/ProgressBar";
-import DountChart from "@/components/DountChart";
+import DoughnutChart from "@/components/DoughnutChart";
 
 interface CategoryHeaderProps {
   backgroundColor: string;
@@ -31,7 +31,7 @@ const CategoryHeader = (props: CategoryHeaderProps) => {
       <div className="flex flex-col gap-[7px]">
         <div className="flex w-full justify-between">
           <h1 className="text-[32px] font-bold">{categoryName}</h1>
-          <DountChart percent={learningRate} />
+          <DoughnutChart percent={learningRate} />
         </div>
         <div className="text-sm font-medium leading-tight text-brandSubText">
           <p>{categoryExplain1}</p>

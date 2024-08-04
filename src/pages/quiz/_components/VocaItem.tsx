@@ -42,8 +42,8 @@ const VocaItem = (props: VocaItemProps) => {
       className={cn(
         "flex flex-col gap-[13px] rounded-[37px] border-2 px-5 py-[30px]",
         {
-          "border-brandGray": !isScrap,
-          "border-brand": isScrap,
+          "border-brandGray": !isBookmarked,
+          "border-brand": isBookmarked,
         },
       )}
     >

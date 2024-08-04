@@ -77,8 +77,8 @@ const QuizActivity: ActivityComponentType<QuizParams> = ({ params }) => {
         step,
         quizList,
       });
-      setButtonLoading(false);
       setButtonCheck(false);
+      setButtonLoading(false);
     }, 2000); // 2초 후에 QuizAnswerActivity로 이동
   };
 
