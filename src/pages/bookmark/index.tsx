@@ -18,7 +18,7 @@ const BookMarkPage = () => {
 
   return (
     <main className="flex h-full flex-col">
-      <header className="sticky left-0 top-0 z-10 bg-white py-2">
+      <header className="sticky left-0 top-0 z-50 bg-white py-2">
         <SubNav NavTitle="책갈피" />
       </header>
       <main className="flex h-full flex-col items-center justify-start">
@@ -43,16 +43,16 @@ const BookMarkPage = () => {
             )}
             onClick={() => handleClick("knowledge")}
           >
-            지식 건강
+            매일 어휘
           </div>
         </header>
-        <section className="px-4 pt-10">
+        <section className="px-4 py-10">
           <Suspense fallback={<div>Loading...</div>}>
             {activeSection === "word" ? <WordSection /> : <KnowledgeSection />}
           </Suspense>
         </section>
       </main>
-      <footer className="sticky bottom-0 left-0 z-10 border-t-[1px] border-solid border-brandGray bg-white py-2">
+      <footer className="sticky bottom-0 left-0 z-50 border-t-[1px] border-solid border-brandGray bg-white py-2">
         <BottomNav />
       </footer>
     </main>

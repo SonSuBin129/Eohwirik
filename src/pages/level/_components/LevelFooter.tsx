@@ -24,7 +24,7 @@ const LevelFooter = (props: LevelFooterProps) => {
             /{wordMaxCount}개
           </p>
         </div>
-        <div className="self-end text-[32px] text-[#547AFF]">{`${percent * 100}%`}</div>
+        <div className="self-end text-[32px] text-[#547AFF]">{`${Math.round(percent * 100)}%`}</div>
       </div>
       <div className="flex flex-col gap-2">
         <ProgressBar percent={percent} />

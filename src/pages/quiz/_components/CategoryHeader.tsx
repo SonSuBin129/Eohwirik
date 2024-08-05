@@ -21,19 +21,19 @@ const CategoryHeader = (props: CategoryHeaderProps) => {
     learningLearned,
     learningTotal,
   } = props;
-  const learningRate = learningLearned / learningTotal;
+  const learningRate = learningTotal > 0 ? learningLearned / learningTotal : 0;
 
   return (
     <section
-      className="h-90 relative flex h-[330px] w-full flex-col justify-between px-4 pb-8 pt-5"
+      className="relative flex min-h-[330px] w-full flex-col justify-between px-4 pb-8 pt-5"
       style={{ backgroundColor }}
     >
       <div className="flex flex-col gap-[7px]">
-        <div className="flex w-full justify-between">
-          <h1 className="text-[32px] font-bold">{categoryName}</h1>
+        <div className="z-30 flex w-full justify-between">
+          <h1 className="z-30 text-[32px] font-bold">{categoryName}</h1>
           <DoughnutChart percent={learningRate} />
         </div>
-        <div className="text-sm font-medium leading-tight text-brandSubText">
+        <div className="z-30 text-sm font-medium leading-tight text-brandSubText">
           <p>{categoryExplain1}</p>
           <p>{categoryExplain2}</p>
         </div>
@@ -48,7 +48,7 @@ const CategoryHeader = (props: CategoryHeaderProps) => {
               /{learningTotal}개
             </p>
           </div>
-          <div className="absolute bottom-[50px] right-4">
+          <div className="absolute bottom-[50px] right-4 z-10">
             <CategoryComponent />
           </div>
         </div>

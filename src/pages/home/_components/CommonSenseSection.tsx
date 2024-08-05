@@ -4,37 +4,26 @@ import {
   CarouselItem,
 } from "@ui/components/ui/carousel";
 
+import { useQueryCommonList } from "@/hooks/queries/useQueryCommonList";
+
+import CommonSenseItem from "./CommonSenseItem";
+
 const CommonSenseSection = () => {
+  const { data: commonList } = useQueryCommonList();
+
   return (
-    <Carousel className="w-full max-w-full">
-      <CarouselContent className="-ml-1">
-        <CarouselItem key={1} className="basis-2/3 pl-2">
-          <div className="flex h-full items-center justify-center bg-brand text-center font-bold text-white">
-            흠..테스트
-          </div>
-        </CarouselItem>
-        <CarouselItem key={2} className="basis-2/3 pl-2">
-          <div className="flex h-full items-center justify-center bg-brand text-center font-bold text-white">
-            흠..테스트
-          </div>
-        </CarouselItem>
-        <CarouselItem key={3} className="basis-2/3 pl-2">
-          <div className="flex h-full items-center justify-center bg-brand text-center font-bold text-white">
-            흠..테스트
-          </div>
-        </CarouselItem>
-        <CarouselItem key={4} className="basis-2/3 pl-2">
-          <div className="flex h-full items-center justify-center bg-brand text-center font-bold text-white">
-            흠..테스트
-          </div>
-        </CarouselItem>
-        <CarouselItem key={5} className="basis-2/3 pl-2">
-          <div className="flex h-full items-center justify-center bg-brand text-center font-bold text-white">
-            흠..테스트
-          </div>
-        </CarouselItem>
-      </CarouselContent>
-    </Carousel>
+    <section className="flex w-full flex-col gap-[10px]">
+      <div className="pl-px text-xl font-bold">휘릭! 매일 어휘 한 조각</div>
+      <Carousel className="w-full max-w-full">
+        <CarouselContent className="-ml-4">
+          {commonList.map(({ id, date }) => (
+            <CarouselItem key={id} className="basis-5/6 pl-4">
+              <CommonSenseItem id={id} date={date} />
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      </Carousel>
+    </section>
   );
 };
 
