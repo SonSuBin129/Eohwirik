@@ -2,6 +2,7 @@ import { useState, useMemo } from "react";
 import { ActivityComponentType } from "@stackflow/react";
 import { AppScreen } from "@stackflow/plugin-basic-ui";
 
+import ProgressBar from "@/components/ProgressBar";
 import NumberIcon from "@/components/Icons/NumberIcon";
 import BackIcon from "@/components/Icons/BackIcon";
 
@@ -97,15 +98,18 @@ const QuizActivity: ActivityComponentType<QuizParams> = ({ params }) => {
       <Activity>
         <ActivityContent>
           <main className="flex h-full flex-col justify-between px-4">
-            <ActivityHeader>
-              <NumberIcon number={step} />
-              <h1 className="flex text-2xl font-bold">
-                <div>{quiz?.question1}</div>
-                <div className="text-brand">[&emsp;&emsp;&emsp;]</div>
-                <div>{quiz?.question2}</div>
-              </h1>
-            </ActivityHeader>
-            <section className="pb-48">
+            <section className="flex flex-col gap-[50px]">
+              <ProgressBar percent={step / quizList.length} />
+              <ActivityHeader>
+                <NumberIcon number={step} />
+                <h1 className="text-2xl font-bold">
+                  {quiz?.question1}
+                  <span className="text-brand">[&emsp;&emsp;&emsp;]</span>
+                  {quiz?.question2}
+                </h1>
+              </ActivityHeader>
+            </section>
+            <section className="pb-24">
               <section className="flex flex-col gap-2">
                 {shuffledAnswers.map((title, index) => (
                   <QuizItem

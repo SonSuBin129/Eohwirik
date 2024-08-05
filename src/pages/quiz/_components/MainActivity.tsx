@@ -4,6 +4,7 @@ import { AppScreen } from "@stackflow/plugin-basic-ui";
 
 import Nav from "@/components/Nav";
 
+import { useManageUser } from "@/hooks/useManageUser";
 import { useManageCategory } from "@/hooks/useManageCategory";
 import { useQueryCategoryLearningRate } from "@/hooks/queries/useQueryCategoryLearningLate";
 
@@ -29,10 +30,13 @@ const MainActivity: ActivityComponentType = () => {
     categoryExplain2,
   } = useManageCategory(Number(categoryId));
 
+  const { userLevel } = useManageUser();
+  localStorage.setItem("OldUserLevel", userLevel);
+
   return (
     <AppScreen>
       <header
-        className="sticky left-0 top-0 z-10 py-2"
+        className="sticky left-0 top-0 z-50 py-2"
         style={{ backgroundColor }}
       >
         <Nav backLink="/home" />
@@ -47,7 +51,7 @@ const MainActivity: ActivityComponentType = () => {
           learningLearned={learningLearned}
           learningTotal={learningTotal}
         />
-        <section className="flex w-full flex-col gap-4 px-4">
+        <section className="flex w-full flex-col gap-4 px-4 pb-10">
           <div className="text-xl font-bold">어휘 학습</div>
 
           <ChapterListSection categoryId={categoryId} />

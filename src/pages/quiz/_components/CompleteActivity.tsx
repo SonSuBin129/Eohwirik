@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { ActivityComponentType } from "@stackflow/react";
 import { AppScreen } from "@stackflow/plugin-basic-ui";
 
+import ProgressBar from "@/components/ProgressBar";
 import CompleteIcon from "@/components/Icons/CompleteIcon";
 import BackIcon from "@/components/Icons/BackIcon";
 
@@ -91,23 +92,28 @@ const CompleteActivity: ActivityComponentType<CompleteParams> = ({
       <Activity>
         <ActivityContent>
           <main className="flex flex-col gap-5 px-4">
-            <ActivityHeader>
-              <CompleteIcon />
-              <section className="flex flex-col gap-[10px]">
-                <div className="flex flex-col gap-8">
-                  <div className="text-2xl font-bold">
-                    <p className="text-brand">수고하셨습니다!</p>
-                    <div>
-                      <p className="inline-block text-brand">[{chapterName}]</p>
-                      <p className="inline-block">&nbsp;학습을 완료했어요!</p>
+            <section className="flex flex-col gap-[50px]">
+              <ProgressBar percent={1} />
+              <ActivityHeader>
+                <CompleteIcon />
+                <section className="flex flex-col gap-[10px]">
+                  <div className="flex flex-col gap-8">
+                    <div className="text-2xl font-bold">
+                      <p className="text-brand">수고하셨습니다!</p>
+                      <div>
+                        <p className="inline-block text-brand">
+                          [{chapterName}]
+                        </p>
+                        <p className="inline-block">&nbsp;학습을 완료했어요!</p>
+                      </div>
+                    </div>
+                    <div className="text-sm text-brandSubText">
+                      [어휘릭]과 함께 계속 어휘력을 향상시켜보세요!
                     </div>
                   </div>
-                  <div className="text-sm text-brandSubText">
-                    [어휘릭]과 함께 계속 어휘력을 향상시켜보세요!
-                  </div>
-                </div>
-              </section>
-            </ActivityHeader>
+                </section>
+              </ActivityHeader>
+            </section>
             <div className="flex w-full items-center justify-center">
               {imageSrc && (
                 <img

@@ -14,7 +14,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
   width = "100%",
   height = "10px",
   backgroundColor = "rgba(175, 175, 175, 0.2)",
-  progressColor = "linear-gradient(90deg, #CADDEF 0%, #9AAFF9 100%)",
+  progressColor = "linear-gradient(90deg, #CAEFEF 0%, #46BEBE 100%)",
 }) => {
   const fillWidth = `${percent * 100}%`; // 0~1 범위의 percent를 백분율로 변환
 

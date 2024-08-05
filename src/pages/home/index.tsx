@@ -3,15 +3,11 @@ import { Suspense } from "react";
 import Nav from "@/components/Nav";
 import BottomNav from "@/components/BottomNav";
 
-import { useManageUser } from "@/hooks/useManageUser";
-
 import CommonSenseSection from "./_components/CommonSenseSection";
 
 import CategorySection from "@/pages/home/_components/CategorySection";
 
 const Home = () => {
-  useManageUser();
-
   return (
     <main className="flex h-full flex-col">
       <header className="sticky left-0 top-0 z-10 bg-white py-2">

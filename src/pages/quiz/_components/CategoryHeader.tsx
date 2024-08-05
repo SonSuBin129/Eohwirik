@@ -52,7 +52,10 @@ const CategoryHeader = (props: CategoryHeaderProps) => {
             <CategoryComponent />
           </div>
         </div>
-        <ProgressBar percent={learningRate} />
+        <ProgressBar
+          percent={learningRate}
+          progressColor="linear-gradient(90deg, #CADDEF 0%, #9AAFF9 100%)"
+        />
       </div>
     </section>
   );
