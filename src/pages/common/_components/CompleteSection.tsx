@@ -17,18 +17,9 @@ interface CompleteSectionProps {
   itemStyle: React.CSSProperties;
 }
 
-const size = [
-  { id: 1, width: 313 },
-  { id: 2, width: 316 },
-  { id: 3, width: 313 },
-  { id: 4, width: 265 },
-];
-
 const CompleteSection = (props: CompleteSectionProps) => {
   const { id, image, title1, title2, explain, class1, class2, itemStyle } =
     props;
-
-  const width = size.find(s => s.id === id)?.width || "100%";
 
   const [isScrap, setIsScrap] = useState(false);
 
@@ -70,7 +61,7 @@ const CompleteSection = (props: CompleteSectionProps) => {
 
   return (
     <section
-      className="relative mb-auto mt-7 flex h-[484px] w-[361px] flex-col justify-start rounded-[41px] border-[3px] border-brandGray px-6 pt-9"
+      className="relative mb-auto mt-7 flex h-auto w-4/5 flex-col justify-evenly rounded-[41px] border-[3px] border-brandGray px-6 py-4"
       style={itemStyle}
     >
       <div className="absolute right-8 top-5 z-30 flex items-center gap-[6px]">
@@ -89,8 +80,13 @@ const CompleteSection = (props: CompleteSectionProps) => {
         </h1>
         <p className="text-base font-extrabold text-brandSubText">{explain}</p>
       </div>
-      <div className="absolute bottom-4 right-4 z-10" style={{ width }}>
-        <img src={image} alt="First Apple" loading="lazy" />
+      <div className="z-10 flex w-full justify-end pr-3">
+        <img
+          src={image}
+          alt="First Apple"
+          loading="lazy"
+          className="h-auto w-4/5 object-contain"
+        />
       </div>
     </section>
   );

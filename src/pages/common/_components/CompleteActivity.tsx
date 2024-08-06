@@ -42,10 +42,10 @@ const CompleteActivity: ActivityComponentType<CompleteParams> = ({
       }}
     >
       <main
-        className="flex h-full flex-col items-center px-4 pt-[52px]"
+        className="flex h-full flex-col items-center justify-evenly px-4"
         style={{ height: "calc(100% - 56px)" }}
       >
-        <section className="flex w-full flex-col gap-1 font-bold">
+        <section className="flex w-full flex-1 flex-col gap-1 font-bold">
           <div className="flex flex-col gap-[6px]">
             <div className="text-2xl text-brand">축하합니다!</div>
             <div className="text-2xl">성공적으로 학습했어요.</div>
@@ -54,17 +54,18 @@ const CompleteActivity: ActivityComponentType<CompleteParams> = ({
             스크랩하시면 다음에도 다시 보기가 가능합니다
           </div>
         </section>
-
-        <CompleteSection
-          id={commonId}
-          image={image}
-          title1={title1}
-          title2={title2}
-          explain={explain}
-          class1={class1}
-          class2={class2}
-          itemStyle={itemStyle}
-        />
+        <div className="flex w-full flex-grow justify-center">
+          <CompleteSection
+            id={commonId}
+            image={image}
+            title1={title1}
+            title2={title2}
+            explain={explain}
+            class1={class1}
+            class2={class2}
+            itemStyle={itemStyle}
+          />
+        </div>
       </main>
       <footer className="sticky bottom-0 z-50">
         <NextButton
