@@ -48,7 +48,7 @@ const QuizActivity: ActivityComponentType<QuizParams> = ({ params }) => {
   const [buttonCheck, setButtonCheck] = useState(false); //버튼으로 정답확인을 했는가?
   const [buttonLoading, setButtonLoading] = useState(false); // 버튼 로딩 상태 추가
 
-  const quiz = quizList.find(q => q.id === step);
+  const quiz = quizList.find(q => (q.id % 5 === 0 ? 5 : q.id % 5) === step);
 
   const shuffledAnswers = useMemo(() => {
     const answers = [
