@@ -10,7 +10,6 @@ import CommonSenseItem from "./CommonSenseItem";
 
 const CommonSenseSection = () => {
   const { data: commonList } = useQueryCommonList();
-  console.log(commonList);
 
   return (
     <section className="flex w-full flex-col gap-[10px]">

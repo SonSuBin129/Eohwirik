@@ -39,7 +39,9 @@ const ChapterItem = (props: ChapterItemProps) => {
         },
       )}
     >
-      <div className="text-center text-base font-extrabold">{chapterId}</div>
+      <div className="text-center text-base font-extrabold">
+        {chapterId % 7 > 0 ? chapterId % 7 : 7}
+      </div>
       <div className="grow text-base font-semibold">{chapterName}</div>
       <LearnedIcon isLearned={isLearned} />
     </div>
