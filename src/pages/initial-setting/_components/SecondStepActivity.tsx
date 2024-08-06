@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ActivityComponentType } from "@stackflow/react";
 import { AppScreen } from "@stackflow/plugin-basic-ui";
 
+import ProgressBar from "@/components/ProgressBar";
 import NumberIcon from "@/components/Icons/NumberIcon";
 import BackIcon from "@/components/Icons/BackIcon";
 
@@ -57,19 +58,22 @@ const SecondStepActivity: ActivityComponentType<SecondParams> = ({
     >
       <Activity>
         <ActivityContent>
-          <ActivityHeader>
-            <NumberIcon number={step} />
-            <section className="flex flex-col gap-1">
-              <div className="text-2xl font-bold">
-                <p className="inline-block text-brand">취약 카테고리</p>
-                <p className="inline-block">를 선택해주세요!</p>
-              </div>
-              <div className="text-sm text-brandSubText">
-                어려움을 느끼는 주제를 선택해주세요. 이 주제에 대한 기초적인
-                설명과 단계별 학습 자료를 제공해 드립니다.
-              </div>
-            </section>
-          </ActivityHeader>
+          <section className="flex flex-col gap-[50px]">
+            <ProgressBar percent={step / 3} />
+            <ActivityHeader>
+              <NumberIcon number={step} />
+              <section className="flex flex-col gap-1">
+                <div className="text-2xl font-bold">
+                  <p className="inline-block text-brand">취약 카테고리</p>
+                  <p className="inline-block">를 선택해주세요!</p>
+                </div>
+                <div className="text-sm text-brandSubText">
+                  어려움을 느끼는 주제를 선택해주세요. 이 주제에 대한 기초적인
+                  설명과 단계별 학습 자료를 제공해 드립니다.
+                </div>
+              </section>
+            </ActivityHeader>
+          </section>
           <section className="w-full grow">
             <div className="grid grid-cols-2 grid-rows-4 gap-x-3 gap-y-[6px] py-5">
               {[

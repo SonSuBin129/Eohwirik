@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ActivityComponentType } from "@stackflow/react";
 import { AppScreen } from "@stackflow/plugin-basic-ui";
 
+import ProgressBar from "@/components/ProgressBar";
 import NumberIcon from "@/components/Icons/NumberIcon";
 
 import NickNameField from "./NickNameField";
@@ -36,10 +37,13 @@ const FirstStepActivity: ActivityComponentType = () => {
     <AppScreen appBar={{ border: false, height: "56px" }}>
       <Activity>
         <ActivityContent>
-          <ActivityHeader>
-            <NumberIcon number={step} />
-            <h1 className="text-2xl font-bold">뭐라고 불러드릴까요?</h1>
-          </ActivityHeader>
+          <section className="flex flex-col gap-[50px]">
+            <ProgressBar percent={step / 3} />
+            <ActivityHeader>
+              <NumberIcon number={step} />
+              <h1 className="text-2xl font-bold">뭐라고 불러드릴까요?</h1>
+            </ActivityHeader>
+          </section>
           <section className="flex grow flex-col gap-[10px]">
             <NickNameField value={nickname} onChange={handleNickName} />
             <ErrorMentBox isPass={isPass} ment={errorMent} />

@@ -43,7 +43,7 @@ const CommonSenseItem = (props: CommonSenseItemProps) => {
   };
 
   return (
-    <section className="flex flex-col gap-[5px]" onClick={handleClick}>
+    <section className="flex w-fit flex-col gap-[5px]" onClick={handleClick}>
       <div className="text-sm">{displayDate}</div>
       <div
         className="relative flex h-[347px] w-[292px] flex-col gap-4 rounded-[34px] px-4 pt-10 font-bold"

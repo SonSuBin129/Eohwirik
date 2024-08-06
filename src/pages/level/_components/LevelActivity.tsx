@@ -69,7 +69,7 @@ const LevelActivity: ActivityComponentType = () => {
         <Nav backLink="/home" />
       </header>
       <main
-        className="flex flex-col items-center justify-between px-4 pb-7"
+        className="flex flex-col items-center justify-between px-4 pb-12"
         style={{ height: "calc(100% - 56px)" }}
       >
         <LevelHeader onClick={handleClick} userLevel={userLevel} />
@@ -81,7 +81,11 @@ const LevelActivity: ActivityComponentType = () => {
             alt="levelImage"
           />
         </section>
-        <LevelFooter wordCount={wordCount} wordMaxCount={wordMaxCount} />
+        <LevelFooter
+          wordCount={wordCount}
+          wordMaxCount={wordMaxCount}
+          userLevel={userLevel}
+        />
       </main>
     </AppScreen>
   );

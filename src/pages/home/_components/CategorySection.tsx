@@ -97,7 +97,7 @@ const CategorySection = () => {
   const { data: categories } = useQueryCategoryList();
 
   return (
-    <section className="flex w-full flex-col gap-[10px]">
+    <section className="flex w-full flex-col gap-[10px] px-4">
       <div className="pl-px text-xl font-bold">카테고리별 어휘 학습</div>
       <section className="mx-auto grid grid-cols-2 grid-rows-3 gap-x-[9px] gap-y-2.5">
         {categories.map(({ id, category }) => (

@@ -13,6 +13,9 @@ interface WordItemProps {
 const WordItem = (props: WordItemProps) => {
   const { isScrap, word, wordClass, description, example } = props;
 
+  // 정규식을 사용하여 example에서 word를 찾아서 분할함.
+  const parts = example.split(new RegExp(`(${word})`, "gi"));
+
   return (
     <div
       className={cn(
@@ -32,7 +35,17 @@ const WordItem = (props: WordItemProps) => {
         </div>
         <div className="text-base font-semibold">{description}</div>
       </section>
-      <section className="text-[15px] text-brandSubText">{example}</section>
+      <section className="text-[15px] text-brandSubText">
+        {parts.map((part, index) =>
+          part.toLowerCase() === word.toLowerCase() ? (
+            <span key={index} className="font-semibold text-brand">
+              {part}
+            </span>
+          ) : (
+            part
+          ),
+        )}
+      </section>
     </div>
   );
 };

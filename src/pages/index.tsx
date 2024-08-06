@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { Button } from "@ui/components/ui/button";
 
 import LandingLogo from "@/components/LandingLogo";
-import Characters from "@/components/character/Characters";
 
 import { Link } from "@/router";
+import firstPageContent from "@/assets/firstPageContent.png";
 
 const MainPage = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -23,15 +23,11 @@ const MainPage = () => {
       {isLoading ? (
         <LandingLogo />
       ) : (
-        <div className="flex h-full flex-col justify-between px-4 py-20">
-          <div className="flex grow flex-col justify-center gap-5">
-            <Characters size={"70%"} />
-            <div className="text-center text-lg font-semibold">
-              <p>서비스명과 함께</p>
-              <p>뫔뫔마마마마를 같이 해보아요!</p>
-            </div>
+        <div className="flex h-full flex-col items-center justify-evenly">
+          <div>
+            <img src={firstPageContent} loading="lazy" />
           </div>
-          <footer>
+          <footer className="w-full px-4">
             <Link to="/login" className="w-full sm:w-80">
               <Button variant="brand" className="w-full text-xl font-semibold">
                 시작하기
