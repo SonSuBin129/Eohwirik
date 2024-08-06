@@ -16,6 +16,7 @@ const SearchPage = () => {
   const [errorMent, setErrorMent] = useState("");
   const [searchDatas, setSearchDatas] = useState<ScrapWordDTO[]>([]);
   const [isLoading, setIsLoading] = useState(false); // 로딩 상태 추가
+  const [isError, setIsError] = useState(false); //
 
   const [isFirst, setIsFirst] = useState(true);
 
@@ -27,6 +28,7 @@ const SearchPage = () => {
     } else {
       setIsPass(true);
       setErrorMent("");
+      setIsError(true);
     }
   };
 
@@ -73,7 +75,11 @@ const SearchPage = () => {
           {isLoading ? (
             <div className="text-center text-lg">Loading...</div>
           ) : (
-            <SearchSection datas={searchDatas} isFirst={isFirst} />
+            <SearchSection
+              datas={searchDatas}
+              isFirst={isFirst}
+              isError={isError}
+            />
           )}
         </Suspense>
       </main>

@@ -32,7 +32,7 @@ const QuizAnswerActivity: ActivityComponentType<QuizAnswerParams> = ({
   const { chapterId, chapterName, step, quizList } = params;
 
   const quiz = quizList.find(q => (q.id % 5 === 0 ? 5 : q.id % 5) === step);
-  const { data: quizAnswer } = useQueryQuizAnswer(step);
+  const { data: quizAnswer } = useQueryQuizAnswer(quiz!.id);
 
   // 퀴즈 답안 항목 배열 생성
   const answerItems = [

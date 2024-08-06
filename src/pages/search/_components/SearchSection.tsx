@@ -5,13 +5,14 @@ import SearchItem from "@/pages/search/_components/SearchItem";
 interface SearchSectinProps {
   datas: ScrapWordDTO[];
   isFirst: boolean;
+  isError: boolean;
 }
 
 const SearchSection = (props: SearchSectinProps) => {
-  const { datas, isFirst } = props;
+  const { datas, isFirst, isError } = props;
   return (
     <section className="flex w-full flex-col gap-6">
-      {datas && datas.length > 0 ? (
+      {datas && datas.length > 0 && !isError ? (
         datas.map((item: ScrapWordDTO) => (
           <SearchItem
             key={item.id}

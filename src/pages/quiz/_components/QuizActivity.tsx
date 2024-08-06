@@ -109,7 +109,7 @@ const QuizActivity: ActivityComponentType<QuizParams> = ({ params }) => {
                 </h1>
               </ActivityHeader>
             </section>
-            <section className="pb-24">
+            <section className="flex w-full grow flex-col justify-center pb-3">
               <section className="flex flex-col gap-2">
                 {shuffledAnswers.map((title, index) => (
                   <QuizItem
