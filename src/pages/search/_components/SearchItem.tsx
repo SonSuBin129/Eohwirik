@@ -50,7 +50,12 @@ const SearchItem = (props: SearchItemProps) => {
     }
   };
 
-  const parts = example.split(new RegExp(`(${word})`, "gi"));
+  const parts = example.split(word).reduce((acc, part, index, arr) => {
+    if (index < arr.length - 1) {
+      return [...acc, part, word];
+    }
+    return [...acc, part];
+  }, [] as string[]);
 
   return (
     <div

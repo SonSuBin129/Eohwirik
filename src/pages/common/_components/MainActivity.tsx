@@ -30,11 +30,11 @@ const MainActivity: ActivityComponentType = () => {
   return (
     <AppScreen>
       <main style={itemStyle} className="h-full">
-        <header className="sticky left-0 top-0 z-10 py-2">
+        <header className="sticky left-0 top-0 z-50 py-2">
           <Nav backLink="/home" NavTitle="매일 어휘 한 조각" />
         </header>
         <main
-          className="flex h-full px-4 pt-7"
+          className="flex px-4 pt-7"
           style={{ height: "calc(100% - 112px)" }}
         >
           <MainSection

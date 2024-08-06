@@ -28,7 +28,6 @@ const SearchPage = () => {
     } else {
       setIsPass(true);
       setErrorMent("");
-      setIsError(true);
     }
   };
 
@@ -49,6 +48,7 @@ const SearchPage = () => {
           onError: () => {
             setIsLoading(false); // 에러 발생 시에도 로딩 상태 해제
             setIsFirst(false);
+            setIsError(true);
           },
         },
       );
