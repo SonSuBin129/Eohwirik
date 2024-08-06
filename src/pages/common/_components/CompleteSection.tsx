@@ -4,6 +4,7 @@ import SubBookMarkIcon from "@/components/Icons/SubBookMarkIcon";
 import ClassComponent from "@/components/ClassComponent";
 
 import { useMutationScrapKnowledge } from "@/hooks/mutation/useMutationScrapKnowledge";
+import { useMutationCancelKnowledge } from "@/hooks/mutation/useMutationCancelKnowledge";
 
 interface CompleteSectionProps {
   id: number;
@@ -32,6 +33,7 @@ const CompleteSection = (props: CompleteSectionProps) => {
   const [isScrap, setIsScrap] = useState(false);
 
   const mutation = useMutationScrapKnowledge();
+  const cancelMutation = useMutationCancelKnowledge();
   const userEmail = localStorage.getItem("userEmail");
 
   const handleScrapClick = () => {
@@ -39,6 +41,20 @@ const CompleteSection = (props: CompleteSectionProps) => {
       setIsScrap(true);
 
       mutation.mutate(
+        {
+          userEmail,
+          knowledgeId: id,
+        },
+        {
+          onSuccess: () => {
+            return;
+          },
+        },
+      );
+    } else if (userEmail) {
+      setIsScrap(false);
+
+      cancelMutation.mutate(
         {
           userEmail,
           knowledgeId: id,

@@ -14,6 +14,7 @@ const WordSection = () => {
         scrapWords.map((item: ScrapWordDTO) => (
           <WordItem
             key={item.id}
+            wordId={item.id}
             isScrap={item.scrap}
             word={item.word}
             wordClass={item.wordClass}

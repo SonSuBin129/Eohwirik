@@ -1,8 +1,4 @@
-import {
-  WordScrapParams,
-  CancelWordParams,
-  CancelKnowledgeParams,
-} from "@/types/scrapType";
+import { WordScrapParams, CancelParams } from "@/types/scrapType";
 import { ScrapWordDTO } from "@/types/quizType";
 import { KnowledgeDTO, ScrapKnowledgeParams } from "@/types/commonType";
 
@@ -43,10 +39,10 @@ export const getScrapKnowledge = async (userEmail: string) => {
 
 export const cancelScrapWord = async ({
   userEmail,
-  wordId,
-}: CancelWordParams) => {
+  knowledgeId,
+}: CancelParams) => {
   const { data } = await instance.post(
-    `/scrap/word-delete?userEmail=${userEmail}&wordId=${wordId}`,
+    `/scrap/word-delete?userEmail=${userEmail}&knowledgeId=${knowledgeId}`,
   );
   return data;
 };
@@ -54,7 +50,7 @@ export const cancelScrapWord = async ({
 export const cancelScrapKnowledge = async ({
   userEmail,
   knowledgeId,
-}: CancelKnowledgeParams) => {
+}: CancelParams) => {
   const { data } = await instance.post(
     `/scrap/knowledge-delete?userEmail=${userEmail}&knowledgeId=${knowledgeId}`,
   );

@@ -3,9 +3,7 @@ export type WordScrapParams = {
   wordId: number;
 };
 
-export type CancelWordParams = WordScrapParams;
-
-export type CancelKnowledgeParams = {
+export type CancelParams = {
   userEmail: string;
   knowledgeId: number;
 };

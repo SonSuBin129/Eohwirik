@@ -1,7 +1,11 @@
+import { useState } from "react";
+
 import SubBookMarkIcon from "@/components/Icons/SubBookMarkIcon";
 import ClassComponent from "@/components/ClassComponent";
 
 import { useManageCommonSense } from "@/hooks/useManageCommonSense";
+import { useMutationScrapKnowledge } from "@/hooks/mutation/useMutationScrapKnowledge";
+import { useMutationCancelKnowledge } from "@/hooks/mutation/useMutationCancelKnowledge";
 
 interface KnowledgeItemProps {
   id: number;
@@ -18,6 +22,8 @@ const size = [
 const KnowledgeItem = (props: KnowledgeItemProps) => {
   const { id, date } = props;
 
+  const [isScrap, setIsScrap] = useState(true);
+
   const width = size.find(s => s.id === id)?.width || "100%";
 
   const { image, title1, title2, explain, class1, class2, backgroundColor } =
@@ -32,6 +38,36 @@ const KnowledgeItem = (props: KnowledgeItemProps) => {
       : undefined, // 그라데이션인 경우 적용
   };
 
+  const mutation = useMutationScrapKnowledge();
+  const cancelMutation = useMutationCancelKnowledge();
+  const userEmail = localStorage.getItem("userEmail")!;
+
+  const handleScrapClick = () => {
+    if (!isScrap) {
+      setIsScrap(true);
+
+      mutation.mutate(
+        { userEmail, knowledgeId: id },
+        {
+          onSuccess: () => {
+            return;
+          },
+        },
+      );
+    } else {
+      setIsScrap(false);
+
+      cancelMutation.mutate(
+        { userEmail, knowledgeId: id },
+        {
+          onSuccess: () => {
+            return;
+          },
+        },
+      );
+    }
+  };
+
   return (
     <section className="flex flex-col gap-[5px]">
       <div className="text-sm text-brandSubText">{date}</div>
@@ -41,7 +77,7 @@ const KnowledgeItem = (props: KnowledgeItemProps) => {
         style={itemStyle}
       >
         <div className="absolute right-[18px] top-6 z-30">
-          <SubBookMarkIcon isActive />
+          <SubBookMarkIcon isActive={isScrap} onClick={handleScrapClick} />
         </div>
 
         <div className="z-20 flex gap-2">

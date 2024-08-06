@@ -4,6 +4,7 @@ import { cn } from "@ui/lib/utils";
 import SubBookMarkIcon from "@/components/Icons/SubBookMarkIcon";
 
 import { useMutationScrapWord } from "@/hooks/mutation/useMutationScrapWord";
+import { useMutationCancelWord } from "@/hooks/mutation/useMutationCancelWord";
 
 interface VocaItemProps {
   id: number;
@@ -20,6 +21,7 @@ const VocaItem = (props: VocaItemProps) => {
   const [isBookmarked, setIsBookmarked] = useState(isScrap);
 
   const mutation = useMutationScrapWord();
+  const cancelMutation = useMutationCancelWord();
   const userEmail = localStorage.getItem("userEmail")!;
 
   const handleBookmarkClick = () => {
@@ -28,6 +30,17 @@ const VocaItem = (props: VocaItemProps) => {
 
       mutation.mutate(
         { userEmail, wordId: id },
+        {
+          onSuccess: () => {
+            return;
+          },
+        },
+      );
+    } else {
+      setIsBookmarked(false);
+
+      cancelMutation.mutate(
+        { userEmail, knowledgeId: id },
         {
           onSuccess: () => {
             return;

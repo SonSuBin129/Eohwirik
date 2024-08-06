@@ -1,13 +1,13 @@
 import { useMutation } from "@tanstack/react-query";
 
-import { CancelWordParams } from "@/types/scrapType";
+import { CancelParams } from "@/types/scrapType";
 
 import { cancelScrapWord } from "@/api/scrap";
 
-export const useMutationCancel = () => {
+export const useMutationCancelWord = () => {
   const mutation = useMutation({
-    mutationFn: ({ userEmail, wordId }: CancelWordParams) =>
-      cancelScrapWord({ userEmail, wordId }),
+    mutationFn: ({ userEmail, knowledgeId }: CancelParams) =>
+      cancelScrapWord({ userEmail, knowledgeId }),
     onSuccess: (response: string) => {
       return response;
     },
