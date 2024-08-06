@@ -13,6 +13,7 @@ export type Path =
   | `/login`
   | `/mypage`
   | `/quiz`
+  | `/search`
   | `/signup`;
 
 export type Params = {};
